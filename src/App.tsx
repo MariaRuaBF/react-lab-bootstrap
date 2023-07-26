@@ -4,7 +4,7 @@ export function App() {
   return (
     <>
       <h1>Bootstrap and mui</h1>
-      <Button variant="outline" colorStyle="success" disabled toggle />
+      <Button variant="outline" />
     </>
   );
 }
