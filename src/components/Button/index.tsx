@@ -1,61 +1,32 @@
-import { ReactNode } from "react";
+import { BaseElement } from "../../interfaces/HTMLAtributtes";
+import {
+  Color,
+  VariantColorTogether,
+} from "../../interfaces/VariantColorTogether";
+import { objectToArrayString } from "../../utils/objectToArrayString";
+import { objectToArrayToStringType } from "../../utils/objectToArrayToStringType";
+import { variantColorTogetherObject } from "../../utils/variantColorTogetherObject";
 
-interface ButtonProps {
-  children?: ReactNode;
-  type?: "button" | "submit" | "reset";
-  className?: string;
-  value?: string | number | readonly string[];
-  autoFocus?: boolean;
+interface ButtonProps
+  extends Omit<BaseElement<HTMLDivElement>, "color">,
+    VariantColorTogether {
+  color?: Color;
+  size?: "sm" | "lg";
   disabled?: boolean;
-  name?: string;
-  form?: string;
-  formAction?: string;
-  onMouseDown?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-  onMouseUp?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-  onContextMenu?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-  onChange?: (e: React.FormEvent<HTMLButtonElement>) => void;
-  onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-  onDoubleClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-  onFocus?: (e: React.FocusEvent<HTMLButtonElement, Element>) => void;
+  toggle?: boolean;
 }
 
 export const Button: React.FC<ButtonProps> = ({
-  children,
-  type,
-  className,
-  value,
-  autoFocus,
+  variant,
+  color,
+  size,
   disabled,
-  name,
-  form,
-  formAction,
-  onMouseDown,
-  onMouseUp,
-  onContextMenu,
-  onChange,
-  onClick,
-  onDoubleClick,
-  onFocus,
+  toggle,
 }) => {
-  return (
-    <button
-      type={type}
-      className={className}
-      value={value}
-      autoFocus={autoFocus}
-      disabled={disabled}
-      name={name}
-      form={form}
-      formAction={formAction}
-      onMouseDown={onMouseDown}
-      onMouseUp={onMouseUp}
-      onContextMenu={onContextMenu}
-      onChange={onChange}
-      onClick={onClick}
-      onDoubleClick={onDoubleClick}
-      onFocus={onFocus}
-    >
-      {children}
-    </button>
+  const classNamesTypes = objectToArrayToStringType(
+    variantColorTogetherObject({ variant, color, size }),
+    "btn"
   );
+  //btn-outline-primary
+  return <button className={`btn ${classNamesTypes} `}>Boton</button>;
 };

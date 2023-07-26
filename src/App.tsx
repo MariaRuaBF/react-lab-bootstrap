@@ -1,3 +1,10 @@
+import { Button } from "./components/Button";
+
 export function App() {
-  return <>Bootstrap to material ui</>;
+  return (
+    <>
+      <h1>Bootstrap and mui</h1>
+      <Button variant="outline" colorStyle="success" disabled toggle />
+    </>
+  );
 }
