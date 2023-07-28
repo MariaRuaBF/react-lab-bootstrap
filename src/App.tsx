@@ -19,9 +19,9 @@ export function App() {
         <CardHeader>Bienvenido</CardHeader>
         <CardBody>Hola mundo</CardBody>
       </Card>
-      <Checkbox />
-      <Checkbox />
-      <Checkbox />
+      <Checkbox variant="checkbox" />
+      <Checkbox variant="switch" />
+      <Checkbox variant="radio" value="tengo valor" />
       <Checkbox />
     </>
   );
