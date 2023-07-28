@@ -11,7 +11,7 @@ interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
 export const Button: React.FC<ButtonProps> = ({
   variant = "fill",
   color = "primary",
-  size,
+  size = "sm",
   ...rest
 }) => {
   const [btnClass, setBtnClass] = useState("");
@@ -25,5 +25,13 @@ export const Button: React.FC<ButtonProps> = ({
     }
   }, [color, variant]);
 
-  return <button className={`btn ${btnClass}`} {...rest} />;
+  useEffect(() => {
+    if (size) {
+      setSizeClass(`btn-${size}`);
+    } else {
+      setSizeClass("");
+    }
+  }, [size]);
+
+  return <button className={`btn ${btnClass} ${sizeClass}`} {...rest} />;
 };
