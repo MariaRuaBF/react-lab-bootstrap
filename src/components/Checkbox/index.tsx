@@ -1,49 +1,50 @@
-import { useEffect, useState } from "react";
+import { useEffect, useId, useState } from "react";
+import { Div, Input, InputProps, Label } from "@components";
 
-interface CheckboxProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface CheckboxProps extends Omit<InputProps, "type"> {
   checked?: boolean;
   disabled?: boolean;
-  variant?: "checkbox" | "radio" | "switch";
+  variant?: "switch";
   value?: string;
+  label?: string;
 }
 
 export const Checkbox: React.FC<CheckboxProps> = ({
-  checked = false,
-  disabled = false,
-  variant = "checkbox",
+  checked: checkedProp = false,
   value = "",
+  className,
+  onChange: onChangeProp,
+  label,
+  variant,
+  id: idProp,
+  ...rest
 }) => {
-  const [isChecked, setIsChecked] = useState(checked);
-  const [isSwitch, setIsSwitch] = useState("");
-  const [isVariant, setIsVariant] = useState("");
+  const [checked, setChecked] = useState(checkedProp);
+  const id = idProp || useId();
 
-  const handleClick = () => {
-    setIsChecked(!isChecked);
-  };
-
-  const variantType = (variant: "checkbox" | "radio" | "switch") => {
-    if (variant == "switch") {
-      setIsSwitch("switch");
-      setIsVariant("checkbox");
-    } else {
-      setIsSwitch("");
-      return variant;
-    }
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setChecked(!checked);
+    onChangeProp?.(event);
   };
 
   useEffect(() => {
-    variantType(variant);
-    setIsVariant(variant);
-  }, []);
+    setChecked(checkedProp);
+  }, [checkedProp]);
+
   return (
-    <input
-      className="form-check-input"
-      onClick={() => handleClick}
-      type={isVariant}
-      value={value}
-      role={isSwitch}
-      checked={isChecked}
-      disabled={disabled}
-    />
+    <Div className={`form-check ${variant ? "form-switch" : ""}`}>
+      <Input
+        {...rest}
+        id={id}
+        className={`form-check-input ${className}`}
+        onChange={onChange}
+        value={value}
+        checked={checked}
+        type="checkbox"
+      />
+      <Label htmlFor={id} className="form-check-label">
+        {label}
+      </Label>
+    </Div>
   );
 };

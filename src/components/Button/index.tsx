@@ -1,7 +1,7 @@
 import { Color, Size, Variant } from "@interfaces";
 import { useEffect, useState } from "react";
 
-interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
   color?: Color;
   size?: Size;
