@@ -1,0 +1,1 @@
+export type Card = 'basic' | 'outlined' | 'dropdown' | 'media'

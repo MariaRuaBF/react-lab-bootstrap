@@ -1,21 +1,17 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Card } from ".";
+import { CardTitle } from ".";
 
 const meta = {
-  component: Card,
-} satisfies Meta<typeof Card>;
+  component: CardTitle,
+} satisfies Meta<typeof CardTitle>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Playground: Story = {
   args: {
-    title: "",
-    subtitle: "",
     children: "Text",
-    variant: "basic",
-    color: "primary",
   },
-  render: (args) => <Card {...args} />,
+  render: (args) => <CardTitle {...args} />,
 };

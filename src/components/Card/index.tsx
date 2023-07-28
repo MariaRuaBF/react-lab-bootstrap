@@ -1,29 +1,47 @@
-import { useEffect } from "react";
+import { BasicCard, BasicCardProps } from "../BasicCard";
 import { Div } from "../Div";
+import { Card as CardType, Color } from "@interfaces";
+import { OutlinedCard } from "../OutlinedCard";
 
-interface CardProps extends React.HTMLAttributes<HTMLDivElement> {}
+export interface CardProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    BasicCardProps {
+  variant?: CardType;
+  color?: Color;
+  title?: string;
+  subtitle?: string;
+  text?: string;
+  anchor?: string;
+}
 
-export const Card: React.FC<CardProps> = ({ ...rest }) => {
-  useEffect(() => {}, []);
-  return <Div className={`card m-4`} {...rest} />;
-};
-
-export const CardBody: React.FC<CardProps> = ({ ...rest }) => {
-  useEffect(() => {}, []);
-  return <Div className={`card-body`} {...rest} />;
-};
-
-export const CardHeader: React.FC<CardProps> = ({ ...rest }) => {
-  useEffect(() => {}, []);
-  return <Div className={`card-header`} {...rest} />;
-};
-
-export const CardTitle: React.FC<CardProps> = ({ ...rest }) => {
-  useEffect(() => {}, []);
-  return <h5 className={`card-title`} {...rest} />;
-};
-
-export const CardSubtitle: React.FC<CardProps> = ({ ...rest }) => {
-  useEffect(() => {}, []);
-  return <h6 className={`card-subtitle`} {...rest} />;
+export const Card: React.FC<CardProps> = ({
+  variant,
+  color,
+  title,
+  subtitle,
+  text,
+  anchor,
+  ...rest
+}) => {
+  return (
+    <Div className={`card m-4`} {...rest}>
+      {variant == "basic" && (
+        <BasicCard
+          title={title}
+          subtitle={subtitle}
+          text={text}
+          anchor={anchor}
+        />
+      )}
+      {variant == "outlined" && (
+        <OutlinedCard
+          color={color}
+          title={title}
+          subtitle={subtitle}
+          text={text}
+          anchor={anchor}
+        />
+      )}
+    </Div>
+  );
 };
