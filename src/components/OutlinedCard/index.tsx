@@ -2,17 +2,12 @@ import { Div } from "../Div";
 import { useEffect, useState } from "react";
 import { Color } from "@interfaces";
 import { BasicCard } from "../BasicCard";
+import { CardProps } from "../Card";
 
-interface OutlinedCardProps extends React.HTMLAttributes<HTMLDivElement> {
-  color?: Color;
-  title?: string;
-  subtitle?: string;
-  text?: string;
-  anchor?: string;
-}
+interface OutlinedCardProps extends CardProps {}
 
 export const OutlinedCard: React.FC<OutlinedCardProps> = ({
-  color,
+  colorCard,
   title,
   subtitle,
   text,
@@ -21,11 +16,11 @@ export const OutlinedCard: React.FC<OutlinedCardProps> = ({
   const [colorOutlined, setColorOutlined] = useState("");
 
   useEffect(() => {
-    setColorOutlined(`${color}`);
-  }, [color]);
+    setColorOutlined(`${colorCard}`);
+  }, [colorCard]);
 
   return (
-    <Div className={`btn btn-outline-${colorOutlined}`}>
+    <Div className={`card border-${colorOutlined}`}>
       <BasicCard
         title={title}
         subtitle={subtitle}

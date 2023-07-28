@@ -1,6 +1,7 @@
+import { CardProps } from "../Card";
 import { Div } from "../Div";
 
-export interface BasicCardProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface BasicCardProps extends CardProps {
   title?: string;
   subtitle?: string;
   text?: string;
