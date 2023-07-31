@@ -18,7 +18,7 @@ export function App() {
           title="Hola mudno"
           subtitle="xDDD"
           anchor="xDD"
-          textColor="primary"
+          textColor="info"
         />
         <CardFooter> Chao mundo</CardFooter>
       </Card>

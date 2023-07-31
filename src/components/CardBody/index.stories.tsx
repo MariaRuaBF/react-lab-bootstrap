@@ -9,6 +9,6 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Cardbody: Story = {
+export const CardBodyTest: Story = {
   render: (args) => <CardBody {...args} />,
 };

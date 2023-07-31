@@ -2,7 +2,7 @@ import { CardProps, Div } from "@components";
 import { Color } from "@interfaces";
 import { useEffect, useState } from "react";
 
-interface CardBodyProps extends CardProps {
+export interface CardBodyProps extends CardProps {
   title?: string;
   subtitle?: string;
   text?: string;

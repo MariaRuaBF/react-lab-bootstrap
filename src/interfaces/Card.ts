@@ -1,1 +1,1 @@
-export type Card = 'basic' | 'outlined' | 'dropdown' | 'media'
+export type Card = 'basic' | 'outlined' 
