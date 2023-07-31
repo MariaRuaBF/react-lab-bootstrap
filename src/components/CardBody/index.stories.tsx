@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { CardBody } from ".";
+import { CardBody } from "../CardBody";
 
 const meta = {
   component: CardBody,
@@ -9,9 +9,6 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Playground: Story = {
-  args: {
-    children: "Text",
-  },
+export const Cardbody: Story = {
   render: (args) => <CardBody {...args} />,
 };
