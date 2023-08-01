@@ -6,6 +6,7 @@ import {
   CardSubtitle,
   CardTitle,
 } from "./components/Card";
+import { Checkbox } from "./components/Checkbox";
 
 export function App() {
   return (
@@ -18,6 +19,10 @@ export function App() {
         <CardHeader>Bienvenido</CardHeader>
         <CardBody>Hola mundo</CardBody>
       </Card>
+      <Checkbox variant="checkbox" />
+      <Checkbox variant="switch" />
+      <Checkbox variant="radio" value="tengo valor" />
+      <Checkbox />
     </>
   );
 }
