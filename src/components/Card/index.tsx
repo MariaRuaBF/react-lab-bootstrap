@@ -1,29 +1,77 @@
-import { useEffect } from "react";
+import cn from "classnames";
+import { useEffect, useState } from "react";
+
 import { Div } from "../Div";
+import { Card as CardType, Color, Size } from "@interfaces";
+import { CardMedia } from "../CardMedia";
 
-interface CardProps extends React.HTMLAttributes<HTMLDivElement> {}
+export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+  variant?: CardType;
+  colorCard?: Color;
+  overlay?: { src: string; alt: string };
+  size?: Size;
+  textCenter?: boolean;
+}
 
-export const Card: React.FC<CardProps> = ({ ...rest }) => {
-  useEffect(() => {}, []);
-  return <Div className={`card m-4`} {...rest} />;
-};
+export const Card: React.FC<CardProps> = ({
+  overlay,
+  className,
+  variant,
+  colorCard,
+  textCenter,
+  size,
+  ...rest
+}) => {
+  const [colorOutlined, setColorOutlined] = useState("");
+  const [sizeCard, setSizeCard] = useState("");
 
-export const CardBody: React.FC<CardProps> = ({ ...rest }) => {
-  useEffect(() => {}, []);
-  return <Div className={`card-body`} {...rest} />;
-};
+  useEffect(() => {
+    setColorOutlined(`${colorCard}`);
+  }, [colorCard]);
 
-export const CardHeader: React.FC<CardProps> = ({ ...rest }) => {
-  useEffect(() => {}, []);
-  return <Div className={`card-header`} {...rest} />;
-};
+  useEffect(() => {
+    switch (size) {
+      case "sm":
+        setSizeCard("w-25");
+        break;
+      case "md":
+        setSizeCard("w-50");
+        break;
+      case "lg":
+        setSizeCard("w-100");
+        break;
+      default:
+        break;
+    }
+  }, [size]);
 
-export const CardTitle: React.FC<CardProps> = ({ ...rest }) => {
-  useEffect(() => {}, []);
-  return <h5 className={`card-title`} {...rest} />;
-};
+  const outlinedColor = variant == "outlined" ? `border-${colorOutlined}` : "";
+  const textCenterCard = textCenter ? "text-center" : "";
 
-export const CardSubtitle: React.FC<CardProps> = ({ ...rest }) => {
-  useEffect(() => {}, []);
-  return <h6 className={`card-subtitle`} {...rest} />;
+  return overlay ? (
+    <Div
+      className={cn(
+        "card m-4",
+        sizeCard,
+        outlinedColor,
+        textCenterCard,
+        className
+      )}
+      {...rest}
+    >
+      <CardMedia src={overlay.src} alt={overlay.alt} />
+      <Div className="card-img-overlay" {...rest} />
+    </Div>
+  ) : (
+    <Div
+      className={cn(
+        "card m-4",
+        outlinedColor,
+        sizeCard,
+        textCenterCard,
+        className
+      )}
+      {...rest}
+    ></Div>
+  );
 };
