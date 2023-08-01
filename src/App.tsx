@@ -1,5 +1,6 @@
 import { Button } from "./components/Button";
 import { Card, CardBody, CardFooter, CardHeader } from "@components";
+import { Checkbox } from "./components/Checkbox";
 
 export function App() {
   const overlayImg = {
@@ -20,6 +21,10 @@ export function App() {
         />
         <CardFooter> Chao mundo</CardFooter>
       </Card>
+      <Checkbox variant="checkbox" />
+      <Checkbox variant="switch" />
+      <Checkbox variant="radio" value="tengo valor" />
+      <Checkbox />
     </>
   );
 }

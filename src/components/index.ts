@@ -7,3 +7,5 @@ export * from './CardMedia';
 export * from './Div';
 export * from './Img';
 export * from './Input';
+export * from "./Checkbox";
+export * from "./Label";
