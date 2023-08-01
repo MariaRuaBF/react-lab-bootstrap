@@ -8,9 +8,7 @@ import { CardMedia } from "../CardMedia";
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: CardType;
   colorCard?: Color;
-  overlay?: boolean;
-  src?: string;
-  alt?: string;
+  overlay?: { src: string; alt: string };
   size?: Size;
   textCenter?: boolean;
 }
@@ -21,8 +19,6 @@ export const Card: React.FC<CardProps> = ({
   variant,
   colorCard,
   textCenter,
-  src,
-  alt,
   size,
   ...rest
 }) => {
@@ -63,7 +59,7 @@ export const Card: React.FC<CardProps> = ({
       )}
       {...rest}
     >
-      <CardMedia src={src} alt={alt} />
+      <CardMedia src={overlay.src} alt={overlay.alt} />
       <Div className="card-img-overlay" {...rest} />
     </Div>
   ) : (

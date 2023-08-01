@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Card, CardProps } from ".";
+import { Card } from ".";
 import { CardBody } from "@components";
 import { CardBodyTest } from "../CardBody/index.stories";
 
