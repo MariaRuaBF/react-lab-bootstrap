@@ -1,6 +1,6 @@
 export interface ImgProps extends React.ImgHTMLAttributes<HTMLImageElement> {
-  src?: string;
-  alt?: string;
+  src: string;
+  alt: string;
 }
 
 export const CardMedia: React.FC<ImgProps> = ({ src, alt, ...rest }) => {

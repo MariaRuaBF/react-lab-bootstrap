@@ -10,5 +10,10 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const CardBodyTest: Story = {
+  args: {
+    title: "Hola mundo",
+    subtitle: "subtitulo",
+    textColor: "warning",
+  },
   render: (args) => <CardBody {...args} />,
 };

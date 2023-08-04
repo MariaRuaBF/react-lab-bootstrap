@@ -13,6 +13,8 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Playground: Story = {
+  args: {},
+
   render: (args) => (
     <Card {...args}>
       <CardBody {...CardBodyTest.args} />
